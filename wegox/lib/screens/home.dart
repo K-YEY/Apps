@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import 'driver_screens/tab_earning.dart';
+import 'driver_screens/tab_home.dart';
+import 'driver_screens/tab_ratting.dart';
+import 'driver_screens/tab_setting.dart';
+
 class HomeApp extends StatefulWidget {
   const HomeApp({super.key});
 
@@ -8,8 +13,15 @@ class HomeApp extends StatefulWidget {
   State<HomeApp> createState() => _HomeAppState();
 }
 
-class _HomeAppState extends State<HomeApp> {
+class _HomeAppState extends State<HomeApp> with SingleTickerProviderStateMixin {
   int navIndex = 0;
+  TabController? tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 4, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +29,22 @@ class _HomeAppState extends State<HomeApp> {
       appBar: AppBar(
         title: const Text('home'),
       ),
+      body: TabBarView(
+        controller: tabController,
+        children: const [
+          HomeTabScreen(),
+          EarningTabScreen(),
+          RattingTabScreen(),
+          SettingsTabScreen(),
+        ],
+      ),
       bottomNavigationBar: NavigationBar(
         height: 80,
         elevation: 0,
         selectedIndex: navIndex,
         onDestinationSelected: (index) {
-          print('hello${index}');
           navIndex = index;
+          tabController!.index = index;
           setState(() {});
         },
         destinations: const [
