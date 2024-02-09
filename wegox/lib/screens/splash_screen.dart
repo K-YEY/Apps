@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:wegox/screens/auth/sign_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -78,7 +78,8 @@ class _SecondPageState extends State<SplashScreen> {
     Timer(const Duration(milliseconds: 4000), () {
       Navigator.of(context).pushReplacement(
         ThisIsFadeRoute(
-          route: const HomeApp(), page: const Text(''),
+          route: const SignUpScreen(),
+          page: const Text(''),
         ),
       );
     });
@@ -110,7 +111,7 @@ class _SecondPageState extends State<SplashScreen> {
               height: _a ? height : 0,
               width: _a ? width : 0,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: const Color(0xFF121212),
                 borderRadius: BorderRadius.circular(_a ? 0 : 99),
               ),
             ),
