@@ -28,7 +28,10 @@ class DriversApp extends StatelessWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+          secondary: Colors.blue,
+        ),
         useMaterial3: true,
       ),
       home: const SplashScreen(),
